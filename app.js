@@ -1,3 +1,11 @@
+if( !/[0-9]{4}/.test(process.argv[2]) ){
+	console.log("Port number must be provided as first parameter");
+	process.exit(-1);
+}else if(process.argv[3] === undefined){
+	console.log("Folder name must be provided as second parameter");
+	process.exit(-1);
+}
+
 const express = require('express');
 const app = express();
 app.set("port", process.argv[2] || 3000);
