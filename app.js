@@ -11,4 +11,5 @@ app.use("/getPort",(req,res)=>{
 
 app.listen(app.get('port'),()=>{
 	console.log("listening on port "+app.get('port'));
+	console.log("Hosting "+app.get('staticFolder'));
 });
