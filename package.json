@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/yeltnar/express_starter/issues"
   },
-  "homepage": "https://github.com/yeltnar/express_starter#readme"
+  "homepage": "https://github.com/yeltnar/express_starter#readme",
+  "dependencies": {
+    "express": "^4.16.3"
+  }
 }
