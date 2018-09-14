@@ -1,0 +1,19 @@
+{
+  "name": "express_starter",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yeltnar/express_starter.git"
+  },
+  "author": "Andrew Brantley",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yeltnar/express_starter/issues"
+  },
+  "homepage": "https://github.com/yeltnar/express_starter#readme"
+}
