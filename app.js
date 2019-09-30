@@ -7,9 +7,18 @@ if( !/[0-9]{4}/.test(process.argv[2]) ){
 }
 
 const express = require('express');
+const bodyParser = require('body-parser');
 const app = express();
 app.set("port", process.argv[2] || 3000);
 app.set("staticFolder", process.argv[3] || "public");
+
+app.use(bodyParser.json());
+
+app.use((req, res, next)=>{
+	const body = req.body;
+	console.log({body});
+	next();
+});
 
 app.use("/",express.static(app.get("staticFolder")));
 
