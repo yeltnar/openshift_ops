@@ -8,6 +8,6 @@ RUN npm i
 
 COPY . .
 
-EXPOSE 3000
+EXPOSE 8080
 
-CMD node app.js 3000 / 
+CMD node app.js 8080 /usr/src/app

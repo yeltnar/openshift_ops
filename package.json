@@ -5,7 +5,8 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start":"node app.js 8080 ."
+    "start":"node app.js 8080 .",
+    "docker":"docker build -t express_starter_devops . && docker run -P -d express_starter_devops"
   },
   "repository": {
     "type": "git",
