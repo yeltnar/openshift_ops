@@ -2,12 +2,11 @@
 # https://stackoverflow.com/questions/42211380/add-insecure-registry-to-docker
 
 if [ -n "$app_name" ]; then
-    echo "app_name is $app_name"
+    echo "app_name found: $app_name"
 else
     echo "app_name is not set (env var)"
     exit
 fi
-
 
 # way to id image on local machine
 let "R =  $RANDOM*$RANDOM*$RANDOM*$RANDOM"
@@ -25,11 +24,11 @@ project_name="rwe"
 # app_name="rwe-drew"
 tag="latest"
 
-echo DOCKER_REGISTRY = $DOCKER_REGISTRY
-echo DOCKER_SERVICE = $DOCKER_SERVICE
-echo project_name = $project_name
-echo app_name = $app_name
-echo tag = $tag
+echo "DOCKER_REGISTRY = "$DOCKER_REGISTRY
+echo "DOCKER_SERVICE = "$DOCKER_SERVICE
+echo "project_name = "$project_name
+echo "app_name = "$app_name
+echo "tag = "$tag
 
 echo "We are not building an image here, we are only pushing one that already has been built"
 
@@ -55,6 +54,8 @@ oc new-project $project_name
 
 echo "oc new-app --docker-image $DOCKER_SERVICE/$project_name/$app_name:$tag"
 oc new-app --docker-image $DOCKER_SERVICE/$project_name/$app_name:$tag
+
+sleep 10
 
 # name is the name of the service (sub sub domain)
 echo "oc expose svc $app_name --name=$app_name"
