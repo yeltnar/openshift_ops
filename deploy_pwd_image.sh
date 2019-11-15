@@ -2,10 +2,17 @@
 # https://stackoverflow.com/questions/42211380/add-insecure-registry-to-docker
 
 if [ -n "$app_name" ]; then
-    echo "app_name found: $app_name"
+    echo "\$app_name found: $app_name"
 else
-    echo "app_name is not set (env var)"
+    echo "\$app_name is not set (env var)"
     exit
+fi
+
+if [ -n "$tag" ]; then
+    echo "\$tag found: $app_name"
+else
+    tag="latest"
+    echo "\$tag not found. Using: $tag"
 fi
 
 # way to id image on local machine
@@ -18,11 +25,10 @@ echo "building image with tag="$image_identifier
 docker build -t $image_identifier . 
 
 DOCKER_REGISTRY="docker-registry-default.apps.pub-openshift1.sc.ibm.com"
-# DOCKER_SERVICE="docker-registry-default.apps.pub-openshift1.sc.ibm.com"
+# DOCKER_SERVICE=$DOCKER_REGISTRY
 DOCKER_SERVICE="docker-registry.default.svc:5000"
 project_name="rwe"
 # app_name="rwe-drew"
-tag="latest"
 
 echo "DOCKER_REGISTRY = "$DOCKER_REGISTRY
 echo "DOCKER_SERVICE = "$DOCKER_SERVICE
