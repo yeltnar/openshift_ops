@@ -35,7 +35,6 @@ image_identifier=$app_image_name # "-"$R
 
 # build current 
 echo "building image with tag="$image_identifier
-# exit
 docker build -t $image_identifier . 
 
 DOCKER_REGISTRY="docker-registry-default.apps.pub-openshift1.sc.ibm.com"
@@ -88,6 +87,9 @@ oc new-app --name $app_kube_name --docker-image $DOCKER_SERVICE/$project_name/$a
 echo "sleep after make app 10..."
 sleep 10
 
+# expose the app with a service # TODO make port dynamic 
+oc expose dc $app_kube_name --port=3000
+
 # name is the name of the service (sub sub domain)
-echo "oc expose svc $app_kube_name --name=$app_kube_name"
+echo "oc expose svc $app_kube_name --name=$app_kube_name --port=3000"
 oc expose svc $app_kube_name --name=$app_kube_name --port=3000
