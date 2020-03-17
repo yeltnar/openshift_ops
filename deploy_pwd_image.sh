@@ -87,9 +87,14 @@ oc new-app --name $app_kube_name --docker-image $DOCKER_SERVICE/$project_name/$a
 echo "sleep after make app 10..."
 sleep 10
 
+# exit statement for when we don't need to expose
+# exit
+
 # expose the app with a service # TODO make port dynamic 
 oc expose dc $app_kube_name --port=3000
+# oc expose dc $app_kube_name --type NodePort --port=3000 --NodePort 30308
 
 # name is the name of the service (sub sub domain)
 echo "oc expose svc $app_kube_name --name=$app_kube_name --port=3000"
 oc expose svc $app_kube_name --name=$app_kube_name --port=3000
+# oc expose svc $app_kube_name --type NodePort --name=$app_kube_name --port=3000
